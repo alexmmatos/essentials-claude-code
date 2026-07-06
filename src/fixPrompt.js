@@ -4,7 +4,7 @@ function buildFixPrompt(result) {
   const lines = [];
 
   lines.push(
-    `I ran arthur-inspector on this project and got a Claude Code adoption score of ${result.total}/${result.maxTotal} (${pct}%).`
+    `I ran essentials-claude-code on this project and got a Claude Code adoption score of ${result.total}/${result.maxTotal} (${pct}%).`
   );
   lines.push("Please implement the following, in priority order (biggest score gap first):");
   lines.push("");

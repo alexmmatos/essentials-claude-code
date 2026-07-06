@@ -1,4 +1,4 @@
-# arthur-inspector architecture
+# essentials-claude-code architecture
 
 This project is a small CLI in plain Node.js (no classes, no framework). The
 SOLID principles and GoF design patterns below show up in their idiomatic
@@ -62,7 +62,7 @@ running the whole CLI).
   to serve as a template when adding a new check (see the
   [`add-check`](../.claude/skills/add-check/SKILL.md) skill).
 
-## Why this matters for arthur-inspector itself
+## Why this matters for essentials-claude-code itself
 
 The `SOLID & GoF` category (weight 10 in `src/score.js`) exists to encourage
 other projects to document these decisions the same way this file does here

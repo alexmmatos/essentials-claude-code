@@ -1,13 +1,17 @@
 {
-  "name": "arthur-inspector",
+  "name": "essentials-claude-code",
   "version": "0.1.0",
   "description": "Evaluates how well a project takes advantage of Claude Code (CLAUDE.md, skills, subagents, hooks, MCP, rules) and produces a score with recommendations.",
   "license": "MIT",
   "type": "commonjs",
   "bin": {
-    "arthur-inspector": "./bin/cli.js"
+    "essentials-claude-code": "./bin/cli.js"
   },
   "main": "./src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexmmatos/essentials-claude-code"
+  },
   "files": [
     "bin",
     "src",

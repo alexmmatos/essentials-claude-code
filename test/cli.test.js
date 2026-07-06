@@ -36,7 +36,7 @@ test("--help lists every supported flag", () => {
 test("--help includes usage examples", () => {
   const output = runHelp("--help");
   assert.ok(output.includes("Examples:"));
-  assert.ok(output.includes("arthur-inspector --min-score=70"));
+  assert.ok(output.includes("essentials-claude-code --min-score=70"));
 });
 
 test("-h is a shorthand for --help", () => {

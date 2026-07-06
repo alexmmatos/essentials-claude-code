@@ -4,7 +4,7 @@ description: Creates or reviews check modules in src/checks/, making sure they f
 tools: Read, Grep, Glob, Write, Edit
 ---
 
-You write and review arthur-inspector's check modules in `src/checks/`.
+You write and review essentials-claude-code's check modules in `src/checks/`.
 
 Every check must:
 - Export `check(root)` and return its result via `buildResult` from `../score`,

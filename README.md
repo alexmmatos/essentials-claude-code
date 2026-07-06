@@ -1,4 +1,4 @@
-# arthur-inspector
+# essentials-claude-code
 
 > **Disclaimer:** This is an independent, unofficial project. It is not
 > affiliated with, endorsed by, or otherwise officially associated with
@@ -19,13 +19,13 @@ used as a local reference for this project.
 ## Usage
 
 ```bash
-npx arthur-inspector [path]
+npx essentials-claude-code [path]
 ```
 
 With no argument, it analyzes the current directory.
 
 ```bash
-$ npx arthur-inspector
+$ npx essentials-claude-code
 
 Arthur Inspector — Claude Code Adoption Score
 
@@ -101,7 +101,7 @@ actually comes up.
 ## Generating essential agents
 
 ```bash
-npx arthur-inspector --generate-essential-agents
+npx essentials-claude-code --generate-essential-agents
 ```
 
 This copies a small, curated set of subagent templates into `.claude/agents/`:
@@ -121,7 +121,7 @@ The templates themselves are bundled from
 ## Generating all relevant agents
 
 ```bash
-npx arthur-inspector --generate-all-agents
+npx essentials-claude-code --generate-all-agents
 ```
 
 While `--generate-essential-agents` only picks one flagship agent per detected
@@ -149,14 +149,14 @@ Two ways to act on the recommendations, from most to least automated. Not sure
 which one fits? Run:
 
 ```bash
-npx arthur-inspector --fix
+npx essentials-claude-code --fix
 ```
 
 It explains both and asks which to run — answer `1`/`basic` or `2`/`prompt`
 (or pass one of the flags below directly to skip the question).
 
 ```bash
-npx arthur-inspector --fix-basic
+npx essentials-claude-code --fix-basic
 ```
 
 Creates only the missing basic scaffolding, mechanically, with no content
@@ -169,7 +169,7 @@ Nothing that already exists is ever overwritten, and the score re-runs
 afterward.
 
 ```bash
-npx arthur-inspector --fix-prompt
+npx essentials-claude-code --fix-prompt
 ```
 
 Prints a single, ready-to-paste prompt — ordered by score gap, each item

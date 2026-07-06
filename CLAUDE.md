@@ -1,4 +1,4 @@
-# arthur-inspector
+# essentials-claude-code
 
 CLI that evaluates how well a project takes advantage of Claude Code's
 extensions (CLAUDE.md, settings.json, skills, subagents, rules, MCP) and

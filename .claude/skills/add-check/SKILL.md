@@ -3,7 +3,7 @@ description: Scaffolds a new scoring category under src/checks/, adjusts the wei
 argument-hint: <category-name>
 ---
 
-Add a new check category called "$ARGUMENTS" to arthur-inspector:
+Add a new check category called "$ARGUMENTS" to essentials-claude-code:
 
 1. Create `src/checks/$ARGUMENTS.js` following the pattern of the existing
    modules: export `check(root)` and return the result via `buildResult({...})`

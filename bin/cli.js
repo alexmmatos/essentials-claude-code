@@ -129,7 +129,7 @@ function parseArgs(argv) {
 }
 
 function printHelp() {
-  console.log(`arthur-inspector [path] [options]
+  console.log(`essentials-claude-code [path] [options]
 
 Evaluates how well a project takes advantage of Claude Code's extensions
 (CLAUDE.md, settings.json, skills, subagents, rules, MCP) and produces
@@ -160,11 +160,11 @@ Options:
   --help, -h                    Show this help
 
 Examples:
-  arthur-inspector                        Analyze the current directory
-  arthur-inspector ../other-project       Analyze a different directory
-  arthur-inspector --verbose --explain    Show details and the reasoning behind them
-  arthur-inspector --json > report.json   Save the result as JSON
-  arthur-inspector --min-score=70         Exit with code 1 in CI if the score is below 70
+  essentials-claude-code                        Analyze the current directory
+  essentials-claude-code ../other-project       Analyze a different directory
+  essentials-claude-code --verbose --explain    Show details and the reasoning behind them
+  essentials-claude-code --json > report.json   Save the result as JSON
+  essentials-claude-code --min-score=70         Exit with code 1 in CI if the score is below 70
 `);
 }
 
