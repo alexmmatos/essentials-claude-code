@@ -27,7 +27,7 @@ With no argument, it analyzes the current directory.
 ```bash
 $ npx essentials-claude-code
 
-Arthur Inspector — Claude Code Adoption Score
+Essentials Claude Code — Adoption Score
 
 Overall score: 91/100 (91%)
 

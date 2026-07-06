@@ -46,7 +46,7 @@ function renderTerminal(result, { verbose = false, color = true, explain = false
   const pct = Math.round((100 * result.total) / result.maxTotal);
   const lines = [];
 
-  lines.push(`${c.bold}Arthur Inspector — Claude Code Adoption Score${c.reset}`);
+  lines.push(`${c.bold}Essentials Claude Code — Adoption Score${c.reset}`);
   lines.push("");
   lines.push(`${c.bold}Overall score: ${scoreColor(pct)}${result.total}/${result.maxTotal} (${pct}%)${c.reset}`);
   lines.push("");

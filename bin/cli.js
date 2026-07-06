@@ -175,6 +175,9 @@ async function main() {
     return;
   }
 
+  const hasAction =
+    opts.generateEssentialAgents || opts.generateAllAgents || opts.fix || opts.fixBasic || opts.fixPrompt;
+
   let result = inspect(opts.path);
 
   if (opts.generateEssentialAgents) {
@@ -210,6 +213,8 @@ async function main() {
     console.log(renderFixPrompt(buildFixPrompt(result), { color: opts.color }));
     return;
   }
+
+  if (hasAction) return;
 
   if (opts.json) {
     console.log(renderJson(result));
