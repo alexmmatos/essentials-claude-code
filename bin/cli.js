@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 const { inspect } = require("../src/index");
-const { renderTerminal, renderJson } = require("../src/report");
+const { renderTerminal, renderJson, renderFixPrompt } = require("../src/report");
 const { generateEssentialAgents } = require("../src/agentTemplates");
+const { buildFixPrompt } = require("../src/fixPrompt");
+const { fixBasic } = require("../src/fixBasic");
 
-const STATUS_ICON = { created: "✔", "skipped-exists": "→", "template-missing": "✘" };
-const STATUS_LABEL = {
+const AGENT_STATUS_ICON = { created: "✔", "skipped-exists": "→", "template-missing": "✘" };
+const AGENT_STATUS_LABEL = {
   created: "created .claude/agents/",
   "skipped-exists": "skipped (already exists): .claude/agents/",
   "template-missing": "template not found for: .claude/agents/",
@@ -14,7 +16,18 @@ function printGenerationSummary(results, languages) {
   const languageNote = languages && languages.primary ? languages.primary.label : "no specific language";
   console.log(`Generating essential agents for ${languageNote}...`);
   for (const r of results) {
-    console.log(`  ${STATUS_ICON[r.status]} ${STATUS_LABEL[r.status]}${r.filename}`);
+    console.log(`  ${AGENT_STATUS_ICON[r.status]} ${AGENT_STATUS_LABEL[r.status]}${r.filename}`);
+  }
+  console.log("");
+}
+
+const FIX_STATUS_ICON = { created: "✔", "skipped-exists": "→" };
+
+function printFixBasicSummary(actions) {
+  console.log("Creating missing scaffolding...");
+  for (const a of actions) {
+    const label = a.status === "created" ? `created ${a.target}` : `skipped (already exists): ${a.target}`;
+    console.log(`  ${FIX_STATUS_ICON[a.status]} ${label}`);
   }
   console.log("");
 }
@@ -29,6 +42,8 @@ function parseArgs(argv) {
     help: false,
     explain: false,
     generateEssentialAgents: false,
+    fixPrompt: false,
+    fixBasic: false,
   };
   const positional = [];
 
@@ -38,6 +53,8 @@ function parseArgs(argv) {
     else if (arg === "--no-color") opts.color = false;
     else if (arg === "--explain") opts.explain = true;
     else if (arg === "--generate-essential-agents") opts.generateEssentialAgents = true;
+    else if (arg === "--fix-prompt") opts.fixPrompt = true;
+    else if (arg === "--fix-basic") opts.fixBasic = true;
     else if (arg === "--help" || arg === "-h") opts.help = true;
     else if (arg.startsWith("--min-score=")) opts.minScore = Number(arg.split("=")[1]);
     else positional.push(arg);
@@ -61,6 +78,10 @@ Options:
   --generate-essential-agents   Generate a few subagents in .claude/agents/ matched
                                  to the project's detected language, from
                                  github.com/VoltAgent/awesome-claude-code-subagents (MIT)
+  --fix-prompt                  Print a ready-to-paste prompt for Claude Code listing
+                                 what's missing, ordered by score gap
+  --fix-basic                   Create the missing basic scaffolding (CLAUDE.md,
+                                 .claude/settings.json, .claude/{rules,skills,agents}/)
   --min-score=N                 Exit with code 1 if the total score is lower than N
   --no-color                    Disable terminal colors
   --help, -h                    Show this help
@@ -80,6 +101,17 @@ function main() {
     const genResults = generateEssentialAgents(result.root, result.languages);
     printGenerationSummary(genResults, result.languages);
     result = inspect(opts.path);
+  }
+
+  if (opts.fixBasic) {
+    const actions = fixBasic(result.root);
+    printFixBasicSummary(actions);
+    result = inspect(opts.path);
+  }
+
+  if (opts.fixPrompt) {
+    console.log(renderFixPrompt(buildFixPrompt(result), { color: opts.color }));
+    return;
   }
 
   if (opts.json) {

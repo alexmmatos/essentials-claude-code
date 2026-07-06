@@ -92,4 +92,10 @@ function renderJson(result) {
   return JSON.stringify(result, null, 2);
 }
 
-module.exports = { renderTerminal, renderJson };
+function renderFixPrompt(promptText, { color = true } = {}) {
+  const c = color ? COLOR : Object.fromEntries(Object.keys(COLOR).map((k) => [k, ""]));
+  const banner = `${c.bold}${c.yellow}⚠ Paste this into Claude Code so it generates the files.${c.reset}`;
+  return `${promptText}\n\n${banner}\n`;
+}
+
+module.exports = { renderTerminal, renderJson, renderFixPrompt };

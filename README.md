@@ -11,6 +11,11 @@ plus whether the project documents SOLID principles and GoF design patterns —
 and produces a 0-to-100 score with concrete recommendations on what to add or
 improve.
 
+## Claude Code documentation
+
+The `docs/claude-code-docs/` folder contains the Claude Code documentation
+used as a local reference for this project.
+
 ## Usage
 
 ```bash
@@ -51,6 +56,8 @@ Top recommendations
 | `--verbose`, `-v` | Shows the details of each check per category |
 | `--explain` | Shows why each remaining recommendation matters, category by category |
 | `--generate-essential-agents` | Generates a few subagents in `.claude/agents/` matched to the project's detected language (see [Generating essential agents](#generating-essential-agents) below) |
+| `--fix-prompt` | Prints a ready-to-paste prompt for Claude Code listing what's missing, ordered by score gap (see [Fixing the gaps](#fixing-the-gaps) below) |
+| `--fix-basic` | Creates the missing basic scaffolding directly: `CLAUDE.md`, `.claude/settings.json`, `.claude/{rules,skills,agents}/` (see [Fixing the gaps](#fixing-the-gaps) below) |
 | `--min-score=N` | Exits with code 1 if the total score is lower than `N` (useful in CI) |
 | `--no-color` | Disables terminal colors |
 | `--help`, `-h` | Shows help |
@@ -110,17 +117,45 @@ The templates themselves are bundled from
 [VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents)
 (MIT License) — see [Credits](#credits).
 
+## Fixing the gaps
+
+Two ways to act on the recommendations, from most to least automated:
+
+```bash
+npx arthur-inspector --fix-basic
+```
+
+Creates only the missing basic scaffolding, mechanically, with no content
+generation: `CLAUDE.md` (a minimal template, with build/test command hints
+from the detected language), `.claude/settings.json` (empty `permissions`/
+`hooks` skeleton), and the `.claude/rules/`, `.claude/skills/`, and
+`.claude/agents/` folders. It also adds `.claude/settings.local.json`/
+`CLAUDE.local.md` to `.gitignore` if either exists and isn't already ignored.
+Nothing that already exists is ever overwritten, and the score re-runs
+afterward.
+
+```bash
+npx arthur-inspector --fix-prompt
+```
+
+Prints a single, ready-to-paste prompt — ordered by score gap, each item
+paired with the same "why it matters" reasoning from `--explain` — for cases
+where scaffolding alone isn't enough and you want Claude Code to actually
+write the content (a real `CLAUDE.md`, real skills, real subagents). The
+output ends with a highlighted reminder to paste it into a Claude Code
+session.
+
 ## Running locally (without publishing)
 
 ```bash
 node bin/cli.js [path] [options]
 ```
 
-## Tests
+## Scripts
 
-```bash
-npm test
-```
+| Command | What it does |
+|---|---|
+| `npm test` | Runs `node --test`, which auto-discovers every `test/*.test.js` file (`node:test` + `node:assert/strict`, no external test framework) and reports pass/fail per test |
 
 ## Credits
 
