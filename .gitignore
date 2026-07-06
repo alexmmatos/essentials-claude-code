@@ -1,0 +1,5 @@
+node_modules/
+
+# Configuração pessoal do Claude Code — não commitar
+.claude/settings.local.json
+CLAUDE.local.md

@@ -1,0 +1,31 @@
+{
+  "name": "arthur-inspector",
+  "version": "0.1.0",
+  "description": "Evaluates how well a project takes advantage of Claude Code (CLAUDE.md, skills, subagents, hooks, MCP, rules) and produces a score with recommendations.",
+  "license": "MIT",
+  "type": "commonjs",
+  "bin": {
+    "arthur-inspector": "./bin/cli.js"
+  },
+  "main": "./src/index.js",
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "template-agents/awesome-claude-code-subagents-main/categories",
+    "template-agents/awesome-claude-code-subagents-main/LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "claude-code",
+    "claude",
+    "cli",
+    "audit",
+    "lint"
+  ]
+}
