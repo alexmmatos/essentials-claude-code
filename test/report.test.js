@@ -46,3 +46,42 @@ test("renderTerminal: reports the manifest-detected language even with an empty 
   assert.ok(!output.includes("no programming language identified"));
   assert.ok(output.includes("JavaScript/TypeScript"));
 });
+
+test("renderTerminal: an empty project (all gaps) suggests --fix-basic, --fix-prompt, --fix, and --generate-essential-agents", () => {
+  const result = inspect(emptyProject());
+  const output = renderTerminal(result, { color: false });
+
+  assert.ok(output.includes("Useful next steps"));
+  assert.ok(output.includes("--fix-basic"));
+  assert.ok(output.includes("--fix-prompt"));
+  assert.ok(output.includes("not sure which of the two above"), "expected the --fix suggestion");
+  assert.ok(output.includes("--generate-essential-agents"));
+  assert.ok(output.includes("--explain"));
+  assert.ok(output.includes("--verbose"));
+  assert.ok(output.includes("--json"));
+});
+
+test("renderTerminal: doesn't suggest --explain or --verbose when already in use", () => {
+  const result = inspect(emptyProject());
+  const output = renderTerminal(result, { color: false, explain: true, verbose: true });
+
+  assert.ok(!output.includes("--explain"));
+  assert.ok(!output.includes("--verbose"));
+  assert.ok(output.includes("--json"));
+});
+
+test("renderTerminal: a fully-scored result suggests neither fix flags nor --generate-essential-agents", () => {
+  const result = {
+    total: 100,
+    maxTotal: 100,
+    languages: { matches: [], breakdown: [], primary: null },
+    categories: [{ id: "agents", label: "Subagents", weight: 15, points: 15, findings: [] }],
+    recommendations: [],
+  };
+  const output = renderTerminal(result, { color: false });
+
+  assert.ok(!output.includes("--fix-basic"));
+  assert.ok(!output.includes("--fix-prompt"));
+  assert.ok(!output.includes("--generate-essential-agents"));
+  assert.ok(output.includes("--json"));
+});

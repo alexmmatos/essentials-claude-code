@@ -84,6 +84,31 @@ function renderTerminal(result, { verbose = false, color = true, explain = false
     }
   }
 
+  const hasGaps = result.total < result.maxTotal;
+  const agentsCategory = result.categories.find((cat) => cat.id === "agents");
+  const agentsIncomplete = agentsCategory && agentsCategory.points < agentsCategory.weight;
+
+  const tips = [];
+  if (!explain) tips.push(["--explain", "see the longer reasoning behind each recommendation"]);
+  if (!verbose) tips.push(["--verbose, -v", "see full detail for every category, not just the summary"]);
+  tips.push(["--json", "machine-readable output, for CI or scripts"]);
+  if (hasGaps) {
+    tips.push(["--fix-basic", "create the missing scaffolding automatically (CLAUDE.md, settings.json, folders) — never overwrites anything"]);
+    tips.push(["--fix-prompt", "get a ready-to-paste prompt for Claude Code to write the real content instead"]);
+    tips.push(["--fix", "not sure which of the two above? this asks and explains both"]);
+  }
+  if (agentsIncomplete) {
+    tips.push(["--generate-essential-agents", "add a subagent matched to this project's language — Subagents isn't at full score yet"]);
+  }
+
+  if (tips.length > 0) {
+    lines.push("");
+    lines.push(`${c.bold}Useful next steps${c.reset}`);
+    for (const [flag, desc] of tips) {
+      lines.push(`  ${c.cyan}→${c.reset} ${c.bold}${flag}${c.reset} — ${desc}`);
+    }
+  }
+
   lines.push("");
   return lines.join("\n");
 }

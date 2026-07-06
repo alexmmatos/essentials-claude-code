@@ -1,0 +1,6 @@
+Na pasta de template-agents/awesome-claude-code-subagents-main/categories 
+temos todos os agentes possiveis que pegamos de outro projeto. 
+Quero criar um dicionario de palavras que tem alguma relação com os templates. 
+Assim podemos entender que temos um agente 
+
+hoje npx arthur-inspector --generate-essential-agents gera o agentes essenciais para o projeto, mas preciso de um novo que seja npx arthur-inspector --generate-complete-agents que baseado no meu dicionario que montei 

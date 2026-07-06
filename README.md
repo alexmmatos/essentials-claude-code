@@ -56,6 +56,7 @@ Top recommendations
 | `--verbose`, `-v` | Shows the details of each check per category |
 | `--explain` | Shows why each remaining recommendation matters, category by category |
 | `--generate-essential-agents` | Generates a few subagents in `.claude/agents/` matched to the project's detected language (see [Generating essential agents](#generating-essential-agents) below) |
+| `--fix` | Asks interactively whether to run `--fix-basic` or `--fix-prompt`, explaining what each one does (see [Fixing the gaps](#fixing-the-gaps) below) |
 | `--fix-prompt` | Prints a ready-to-paste prompt for Claude Code listing what's missing, ordered by score gap (see [Fixing the gaps](#fixing-the-gaps) below) |
 | `--fix-basic` | Creates the missing basic scaffolding directly: `CLAUDE.md`, `.claude/settings.json`, `.claude/{rules,skills,agents}/` (see [Fixing the gaps](#fixing-the-gaps) below) |
 | `--min-score=N` | Exits with code 1 if the total score is lower than `N` (useful in CI) |
@@ -117,9 +118,42 @@ The templates themselves are bundled from
 [VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents)
 (MIT License) — see [Credits](#credits).
 
+## Generating all relevant agents
+
+```bash
+npx arthur-inspector --generate-all-agents
+```
+
+While `--generate-essential-agents` only picks one flagship agent per detected
+language, this scans the whole project **once** against
+`src/agentTermTemplateRelevance.json` — a dictionary mapping literal terms
+(dependency names, filenames, phrases) to the agent templates they're
+relevant to, with a weight per term. Every template whose matched terms add
+up to a positive relevance score gets generated into `.claude/agents/`, not
+just one per language — so a project touching Docker, Kubernetes, and
+GraphQL can end up with all three matching specialists, on top of whatever
+the detected language contributes.
+
+The single-pass scan uses [ripgrep](https://github.com/BurntSushi/ripgrep)
+(`rg`) when it's installed, for speed. If `rg` isn't found in `PATH`, it
+transparently falls back to a slower, built-in pure-Node scanner — the
+command prints a one-line note about which one ran, but it always works
+either way; `rg` is optional, not a hard dependency (see
+[ripgrep's installation instructions](https://github.com/BurntSushi/ripgrep#installation)
+if you want the faster path on large projects). Same never-overwrite
+behavior and `THIRD_PARTY_NOTICES.md` as `--generate-essential-agents`.
+
 ## Fixing the gaps
 
-Two ways to act on the recommendations, from most to least automated:
+Two ways to act on the recommendations, from most to least automated. Not sure
+which one fits? Run:
+
+```bash
+npx arthur-inspector --fix
+```
+
+It explains both and asks which to run — answer `1`/`basic` or `2`/`prompt`
+(or pass one of the flags below directly to skip the question).
 
 ```bash
 npx arthur-inspector --fix-basic

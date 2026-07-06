@@ -1,0 +1,682 @@
+{
+  "source": "template-agents/awesome-claude-code-subagents-main/categories",
+  "totalAgents": 154,
+  "categories": [
+    {
+      "category": "01-core-development",
+      "path": "template-agents/awesome-claude-code-subagents-main/categories/01-core-development",
+      "agents": [
+        {
+          "name": "api-designer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/01-core-development/api-designer.md"
+        },
+        {
+          "name": "backend-developer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/01-core-development/backend-developer.md"
+        },
+        {
+          "name": "design-bridge",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/01-core-development/design-bridge.md"
+        },
+        {
+          "name": "electron-pro",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/01-core-development/electron-pro.md"
+        },
+        {
+          "name": "frontend-developer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/01-core-development/frontend-developer.md"
+        },
+        {
+          "name": "fullstack-developer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/01-core-development/fullstack-developer.md"
+        },
+        {
+          "name": "graphql-architect",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/01-core-development/graphql-architect.md"
+        },
+        {
+          "name": "microservices-architect",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/01-core-development/microservices-architect.md"
+        },
+        {
+          "name": "mobile-developer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/01-core-development/mobile-developer.md"
+        },
+        {
+          "name": "ui-designer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/01-core-development/ui-designer.md"
+        },
+        {
+          "name": "websocket-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/01-core-development/websocket-engineer.md"
+        }
+      ]
+    },
+    {
+      "category": "02-language-specialists",
+      "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists",
+      "agents": [
+        {
+          "name": "angular-architect",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/angular-architect.md"
+        },
+        {
+          "name": "cpp-pro",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/cpp-pro.md"
+        },
+        {
+          "name": "csharp-developer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/csharp-developer.md"
+        },
+        {
+          "name": "django-developer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/django-developer.md"
+        },
+        {
+          "name": "dotnet-core-expert",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/dotnet-core-expert.md"
+        },
+        {
+          "name": "dotnet-framework-4.8-expert",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/dotnet-framework-4.8-expert.md"
+        },
+        {
+          "name": "elixir-expert",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/elixir-expert.md"
+        },
+        {
+          "name": "expo-react-native-expert",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/expo-react-native-expert.md"
+        },
+        {
+          "name": "fastapi-developer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/fastapi-developer.md"
+        },
+        {
+          "name": "flutter-expert",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/flutter-expert.md"
+        },
+        {
+          "name": "golang-pro",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/golang-pro.md"
+        },
+        {
+          "name": "java-architect",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/java-architect.md"
+        },
+        {
+          "name": "javascript-pro",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/javascript-pro.md"
+        },
+        {
+          "name": "kotlin-specialist",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/kotlin-specialist.md"
+        },
+        {
+          "name": "laravel-specialist",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/laravel-specialist.md"
+        },
+        {
+          "name": "nextjs-developer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/nextjs-developer.md"
+        },
+        {
+          "name": "node-specialist",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/node-specialist.md"
+        },
+        {
+          "name": "php-pro",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/php-pro.md"
+        },
+        {
+          "name": "powershell-5.1-expert",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/powershell-5.1-expert.md"
+        },
+        {
+          "name": "powershell-7-expert",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/powershell-7-expert.md"
+        },
+        {
+          "name": "python-pro",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/python-pro.md"
+        },
+        {
+          "name": "rails-expert",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/rails-expert.md"
+        },
+        {
+          "name": "react-specialist",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/react-specialist.md"
+        },
+        {
+          "name": "rust-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/rust-engineer.md"
+        },
+        {
+          "name": "spring-boot-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/spring-boot-engineer.md"
+        },
+        {
+          "name": "sql-pro",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/sql-pro.md"
+        },
+        {
+          "name": "swift-expert",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/swift-expert.md"
+        },
+        {
+          "name": "symfony-specialist",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/symfony-specialist.md"
+        },
+        {
+          "name": "typescript-pro",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/typescript-pro.md"
+        },
+        {
+          "name": "vue-expert",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/02-language-specialists/vue-expert.md"
+        }
+      ]
+    },
+    {
+      "category": "03-infrastructure",
+      "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure",
+      "agents": [
+        {
+          "name": "azure-infra-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/azure-infra-engineer.md"
+        },
+        {
+          "name": "cloud-architect",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/cloud-architect.md"
+        },
+        {
+          "name": "database-administrator",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/database-administrator.md"
+        },
+        {
+          "name": "deployment-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/deployment-engineer.md"
+        },
+        {
+          "name": "devops-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/devops-engineer.md"
+        },
+        {
+          "name": "devops-incident-responder",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/devops-incident-responder.md"
+        },
+        {
+          "name": "docker-expert",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/docker-expert.md"
+        },
+        {
+          "name": "incident-responder",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/incident-responder.md"
+        },
+        {
+          "name": "kubernetes-specialist",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/kubernetes-specialist.md"
+        },
+        {
+          "name": "network-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/network-engineer.md"
+        },
+        {
+          "name": "platform-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/platform-engineer.md"
+        },
+        {
+          "name": "security-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/security-engineer.md"
+        },
+        {
+          "name": "sre-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/sre-engineer.md"
+        },
+        {
+          "name": "terraform-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/terraform-engineer.md"
+        },
+        {
+          "name": "terragrunt-expert",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/terragrunt-expert.md"
+        },
+        {
+          "name": "windows-infra-admin",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/03-infrastructure/windows-infra-admin.md"
+        }
+      ]
+    },
+    {
+      "category": "04-quality-security",
+      "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security",
+      "agents": [
+        {
+          "name": "accessibility-tester",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/accessibility-tester.md"
+        },
+        {
+          "name": "ad-security-reviewer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/ad-security-reviewer.md"
+        },
+        {
+          "name": "ai-writing-auditor",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/ai-writing-auditor.md"
+        },
+        {
+          "name": "architect-reviewer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/architect-reviewer.md"
+        },
+        {
+          "name": "chaos-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/chaos-engineer.md"
+        },
+        {
+          "name": "code-reviewer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/code-reviewer.md"
+        },
+        {
+          "name": "compliance-auditor",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/compliance-auditor.md"
+        },
+        {
+          "name": "debugger",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/debugger.md"
+        },
+        {
+          "name": "error-detective",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/error-detective.md"
+        },
+        {
+          "name": "gdpr-ccpa-compliance",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/gdpr-ccpa-compliance.md"
+        },
+        {
+          "name": "penetration-tester",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/penetration-tester.md"
+        },
+        {
+          "name": "performance-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/performance-engineer.md"
+        },
+        {
+          "name": "powershell-security-hardening",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/powershell-security-hardening.md"
+        },
+        {
+          "name": "qa-expert",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/qa-expert.md"
+        },
+        {
+          "name": "security-auditor",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/security-auditor.md"
+        },
+        {
+          "name": "test-automator",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/test-automator.md"
+        },
+        {
+          "name": "ui-ux-tester",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/04-quality-security/ui-ux-tester.md"
+        }
+      ]
+    },
+    {
+      "category": "05-data-ai",
+      "path": "template-agents/awesome-claude-code-subagents-main/categories/05-data-ai",
+      "agents": [
+        {
+          "name": "ai-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/05-data-ai/ai-engineer.md"
+        },
+        {
+          "name": "data-analyst",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/05-data-ai/data-analyst.md"
+        },
+        {
+          "name": "data-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/05-data-ai/data-engineer.md"
+        },
+        {
+          "name": "data-scientist",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/05-data-ai/data-scientist.md"
+        },
+        {
+          "name": "database-optimizer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/05-data-ai/database-optimizer.md"
+        },
+        {
+          "name": "llm-architect",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/05-data-ai/llm-architect.md"
+        },
+        {
+          "name": "machine-learning-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/05-data-ai/machine-learning-engineer.md"
+        },
+        {
+          "name": "ml-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/05-data-ai/ml-engineer.md"
+        },
+        {
+          "name": "mlops-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/05-data-ai/mlops-engineer.md"
+        },
+        {
+          "name": "nlp-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/05-data-ai/nlp-engineer.md"
+        },
+        {
+          "name": "postgres-pro",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/05-data-ai/postgres-pro.md"
+        },
+        {
+          "name": "prompt-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/05-data-ai/prompt-engineer.md"
+        },
+        {
+          "name": "reinforcement-learning-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/05-data-ai/reinforcement-learning-engineer.md"
+        }
+      ]
+    },
+    {
+      "category": "06-developer-experience",
+      "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience",
+      "agents": [
+        {
+          "name": "build-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience/build-engineer.md"
+        },
+        {
+          "name": "cli-developer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience/cli-developer.md"
+        },
+        {
+          "name": "dependency-manager",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience/dependency-manager.md"
+        },
+        {
+          "name": "documentation-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience/documentation-engineer.md"
+        },
+        {
+          "name": "dx-optimizer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience/dx-optimizer.md"
+        },
+        {
+          "name": "git-workflow-manager",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience/git-workflow-manager.md"
+        },
+        {
+          "name": "legacy-modernizer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience/legacy-modernizer.md"
+        },
+        {
+          "name": "mcp-developer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience/mcp-developer.md"
+        },
+        {
+          "name": "powershell-module-architect",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience/powershell-module-architect.md"
+        },
+        {
+          "name": "powershell-ui-architect",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience/powershell-ui-architect.md"
+        },
+        {
+          "name": "readme-generator",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience/readme-generator.md"
+        },
+        {
+          "name": "refactoring-specialist",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience/refactoring-specialist.md"
+        },
+        {
+          "name": "slack-expert",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience/slack-expert.md"
+        },
+        {
+          "name": "tooling-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience/tooling-engineer.md"
+        },
+        {
+          "name": "visual-asset-generator",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/06-developer-experience/visual-asset-generator.md"
+        }
+      ]
+    },
+    {
+      "category": "07-specialized-domains",
+      "path": "template-agents/awesome-claude-code-subagents-main/categories/07-specialized-domains",
+      "agents": [
+        {
+          "name": "api-documenter",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/07-specialized-domains/api-documenter.md"
+        },
+        {
+          "name": "blockchain-developer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/07-specialized-domains/blockchain-developer.md"
+        },
+        {
+          "name": "embedded-systems",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/07-specialized-domains/embedded-systems.md"
+        },
+        {
+          "name": "fintech-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/07-specialized-domains/fintech-engineer.md"
+        },
+        {
+          "name": "game-developer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/07-specialized-domains/game-developer.md"
+        },
+        {
+          "name": "healthcare-admin",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/07-specialized-domains/healthcare-admin.md"
+        },
+        {
+          "name": "hipaa-compliance",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/07-specialized-domains/hipaa-compliance.md"
+        },
+        {
+          "name": "iot-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/07-specialized-domains/iot-engineer.md"
+        },
+        {
+          "name": "m365-admin",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/07-specialized-domains/m365-admin.md"
+        },
+        {
+          "name": "mobile-app-developer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/07-specialized-domains/mobile-app-developer.md"
+        },
+        {
+          "name": "payment-integration",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/07-specialized-domains/payment-integration.md"
+        },
+        {
+          "name": "quant-analyst",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/07-specialized-domains/quant-analyst.md"
+        },
+        {
+          "name": "risk-manager",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/07-specialized-domains/risk-manager.md"
+        },
+        {
+          "name": "seo-specialist",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/07-specialized-domains/seo-specialist.md"
+        }
+      ]
+    },
+    {
+      "category": "08-business-product",
+      "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product",
+      "agents": [
+        {
+          "name": "assumption-mapping",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/assumption-mapping.md"
+        },
+        {
+          "name": "backlog-grooming",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/backlog-grooming.md"
+        },
+        {
+          "name": "business-analyst",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/business-analyst.md"
+        },
+        {
+          "name": "content-marketer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/content-marketer.md"
+        },
+        {
+          "name": "content-quality-editor",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/content-quality-editor.md"
+        },
+        {
+          "name": "customer-success-manager",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/customer-success-manager.md"
+        },
+        {
+          "name": "growth-loops",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/growth-loops.md"
+        },
+        {
+          "name": "legal-advisor",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/legal-advisor.md"
+        },
+        {
+          "name": "license-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/license-engineer.md"
+        },
+        {
+          "name": "product-manager",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/product-manager.md"
+        },
+        {
+          "name": "project-manager",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/project-manager.md"
+        },
+        {
+          "name": "sales-engineer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/sales-engineer.md"
+        },
+        {
+          "name": "scrum-master",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/scrum-master.md"
+        },
+        {
+          "name": "technical-writer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/technical-writer.md"
+        },
+        {
+          "name": "ux-researcher",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/ux-researcher.md"
+        },
+        {
+          "name": "wordpress-master",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/08-business-product/wordpress-master.md"
+        }
+      ]
+    },
+    {
+      "category": "09-meta-orchestration",
+      "path": "template-agents/awesome-claude-code-subagents-main/categories/09-meta-orchestration",
+      "agents": [
+        {
+          "name": "agent-installer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/09-meta-orchestration/agent-installer.md"
+        },
+        {
+          "name": "agent-organizer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/09-meta-orchestration/agent-organizer.md"
+        },
+        {
+          "name": "codebase-orchestrator",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/09-meta-orchestration/codebase-orchestrator.md"
+        },
+        {
+          "name": "context-manager",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/09-meta-orchestration/context-manager.md"
+        },
+        {
+          "name": "error-coordinator",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/09-meta-orchestration/error-coordinator.md"
+        },
+        {
+          "name": "it-ops-orchestrator",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/09-meta-orchestration/it-ops-orchestrator.md"
+        },
+        {
+          "name": "knowledge-synthesizer",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/09-meta-orchestration/knowledge-synthesizer.md"
+        },
+        {
+          "name": "multi-agent-coordinator",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/09-meta-orchestration/multi-agent-coordinator.md"
+        },
+        {
+          "name": "performance-monitor",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/09-meta-orchestration/performance-monitor.md"
+        },
+        {
+          "name": "task-distributor",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/09-meta-orchestration/task-distributor.md"
+        },
+        {
+          "name": "workflow-orchestrator",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/09-meta-orchestration/workflow-orchestrator.md"
+        }
+      ]
+    },
+    {
+      "category": "10-research-analysis",
+      "path": "template-agents/awesome-claude-code-subagents-main/categories/10-research-analysis",
+      "agents": [
+        {
+          "name": "ab-test-analysis",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/10-research-analysis/ab-test-analysis.md"
+        },
+        {
+          "name": "cohort-analysis",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/10-research-analysis/cohort-analysis.md"
+        },
+        {
+          "name": "competitive-analyst",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/10-research-analysis/competitive-analyst.md"
+        },
+        {
+          "name": "data-researcher",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/10-research-analysis/data-researcher.md"
+        },
+        {
+          "name": "first-principles-thinking",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/10-research-analysis/first-principles-thinking.md"
+        },
+        {
+          "name": "market-researcher",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/10-research-analysis/market-researcher.md"
+        },
+        {
+          "name": "project-idea-validator",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/10-research-analysis/project-idea-validator.md"
+        },
+        {
+          "name": "research-analyst",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/10-research-analysis/research-analyst.md"
+        },
+        {
+          "name": "scientific-literature-researcher",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/10-research-analysis/scientific-literature-researcher.md"
+        },
+        {
+          "name": "search-specialist",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/10-research-analysis/search-specialist.md"
+        },
+        {
+          "name": "trend-analyst",
+          "path": "template-agents/awesome-claude-code-subagents-main/categories/10-research-analysis/trend-analyst.md"
+        }
+      ]
+    }
+  ]
+}
