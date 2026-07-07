@@ -23,6 +23,8 @@ and `.claude-plugin/marketplace.json`) — no `npx` or Node install required
 on your side, just add the marketplace and install it from inside Claude
 Code:
 
+<img width="1647" height="882" alt="image" src="https://github.com/user-attachments/assets/d3047341-3b89-425f-bdf2-6b0e8b2e1da6" />
+
 ```
 /plugin marketplace add https://github.com/alexmmatos/essentials-claude-code
 /plugin install essentials-claude-code@essentials-claude-code-marketplace
@@ -38,6 +40,9 @@ the CLI flags described below:
 | `/essentials-claude-code:generate-agents [path]` | `npx essentials-claude-code --generate-essential-agents` |
 
 ## Usage
+
+<img width="1817" height="789" alt="image" src="https://github.com/user-attachments/assets/fa1fada3-1621-4f64-97c8-8a8b6dbbfe8d" />
+
 
 ```bash
 npx essentials-claude-code [path]
