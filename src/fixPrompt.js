@@ -1,3 +1,14 @@
+function renderRec(lines, n, rec) {
+  lines.push(`${n}. ${rec.category} (${rec.gap} point${rec.gap === 1 ? "" : "s"} missing)`);
+  for (const item of rec.items) {
+    lines.push(`   - ${item}`);
+  }
+  if (rec.explanation) {
+    lines.push(`   Why this matters: ${rec.explanation}`);
+  }
+  lines.push("");
+}
+
 /** Builds a plain-text, copy-pasteable prompt summarizing what's missing, ordered by score gap. */
 function buildFixPrompt(result) {
   const pct = Math.round((100 * result.total) / result.maxTotal);
@@ -9,20 +20,25 @@ function buildFixPrompt(result) {
   lines.push("Please implement the following, in priority order (biggest score gap first):");
   lines.push("");
 
-  const actionable = result.recommendations.filter((rec) => !rec.skipInFixPrompt);
-  const manual = result.recommendations.filter((rec) => rec.skipInFixPrompt);
+  const auto = result.recommendations.filter((rec) => (rec.fixPromptMode || "auto") === "auto");
+  const conditional = result.recommendations.filter((rec) => rec.fixPromptMode === "conditional");
+  const manual = result.recommendations.filter((rec) => rec.fixPromptMode === "manual");
 
   let n = 1;
-  for (const rec of actionable) {
-    lines.push(`${n}. ${rec.category} (${rec.gap} point${rec.gap === 1 ? "" : "s"} missing)`);
-    for (const item of rec.items) {
-      lines.push(`   - ${item}`);
-    }
-    if (rec.explanation) {
-      lines.push(`   Why this matters: ${rec.explanation}`);
-    }
-    lines.push("");
+  for (const rec of auto) {
+    renderRec(lines, n, rec);
     n += 1;
+  }
+
+  if (conditional.length > 0) {
+    lines.push(
+      "The following only apply in some situations — ask the user whether each one is actually relevant to this project before touching anything, rather than assuming it applies or fabricating scaffolding just to close the gap:"
+    );
+    lines.push("");
+    for (const rec of conditional) {
+      renderRec(lines, n, rec);
+      n += 1;
+    }
   }
 
   if (manual.length > 0) {

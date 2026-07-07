@@ -30,7 +30,14 @@ function check(root) {
     recommendations.push(
       "If the team depends on external data (database, Slack, APIs), configure MCP servers in .mcp.json."
     );
-    return buildResult({ id: "mcp", label: "MCP", raw: 0, findings, recommendations });
+    return buildResult({
+      id: "mcp",
+      label: "MCP",
+      raw: 0,
+      findings,
+      recommendations,
+      fixPromptMode: "conditional",
+    });
   }
 
   let raw = 30;
@@ -44,6 +51,7 @@ function check(root) {
   raw += 20;
   findings.push({ type: "ok", message: "Valid JSON." });
 
+  let fixPromptMode = "auto";
   const servers = data.mcpServers && typeof data.mcpServers === "object" ? data.mcpServers : {};
   const serverNames = Object.keys(servers);
   if (serverNames.length > 0) {
@@ -66,9 +74,10 @@ function check(root) {
   } else {
     findings.push({ type: "warn", message: "mcpServers is empty or missing." });
     recommendations.push("Add at least one server to mcpServers inside .mcp.json.");
+    fixPromptMode = "conditional";
   }
 
-  return buildResult({ id: "mcp", label: "MCP", raw, findings, recommendations });
+  return buildResult({ id: "mcp", label: "MCP", raw, findings, recommendations, fixPromptMode });
 }
 
 module.exports = { check };

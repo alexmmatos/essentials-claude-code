@@ -17,8 +17,14 @@ const EXPLANATIONS = {
     "MCP is what connects Claude to systems it can't otherwise reach — a database, an internal API, Slack. Without it, Claude either can't act on that data at all or falls back on ad hoc shell commands, which is slower and less reliable. Hardcoding secrets in .mcp.json instead of referencing environment variables also risks leaking them into a file people commit.",
   hygiene:
     "settings.local.json and CLAUDE.local.md hold personal configuration — permissions or preferences that shouldn't be forced on the rest of the team. If they aren't gitignored, they get committed by accident and either leak personal setup or silently override what the team agreed on.",
-  extras:
-    "These are optional refinements (custom output styles, saved workflows, persistent subagent memory, worktree file copying) that smooth out specific friction points once you hit them. None are required for Claude Code to work well, so skipping them costs little until the matching need actually shows up.",
+  output_styles:
+    "A custom output style changes Claude's default tone and response shape for everyone on the team, instead of each person repeating the same preferences in every prompt. It's a nice-to-have — skip it until the team actually agrees on a shared response mode.",
+  workflows:
+    "Saved workflows turn a multi-subagent orchestration you'd otherwise re-assemble by hand into a single reusable command. Worth adding once you have an orchestration you actually repeat, not before.",
+  agent_memory:
+    "Subagent memory lets a subagent build up institutional knowledge (patterns, past mistakes, architectural decisions) across sessions instead of rediscovering it every run. It compounds in value the more a subagent is reused, so it's worth more than the other Extras here.",
+  worktree_include:
+    ".worktreeinclude copies files like .env into new git worktrees automatically. It only matters if the team actually uses worktrees — otherwise there's nothing for it to do.",
   principles:
     "Documenting the SOLID principles and GoF patterns actually used in the codebase gives Claude, and new contributors, an explicit map of design decisions already made, instead of forcing a reverse-engineering pass through scattered code — the same reasoning behind keeping CLAUDE.md itself as upfront, explicit context.",
 };

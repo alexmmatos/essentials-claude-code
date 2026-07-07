@@ -45,11 +45,24 @@ test("buildFixPrompt: an existing settings.json is flagged for manual review, no
   const prompt = buildFixPrompt(result);
 
   const settingsRec = result.recommendations.find((rec) => rec.id === "settings");
-  assert.ok(settingsRec.skipInFixPrompt);
+  assert.equal(settingsRec.fixPromptMode, "manual");
   assert.ok(!prompt.includes("Configure permissions.allow/deny"));
   assert.ok(!prompt.includes("Consider configuring statusLine"));
   assert.ok(prompt.includes("security-sensitive Claude Code config"));
   assert.ok(prompt.includes(settingsRec.category));
+});
+
+test("buildFixPrompt: MCP and each Extras item are conditional — asked about, not instructed outright", () => {
+  const result = inspect(emptyProject());
+  const prompt = buildFixPrompt(result);
+
+  const mcpRec = result.recommendations.find((rec) => rec.id === "mcp");
+  const outputStylesRec = result.recommendations.find((rec) => rec.id === "output_styles");
+  assert.equal(mcpRec.fixPromptMode, "conditional");
+  assert.equal(outputStylesRec.fixPromptMode, "conditional");
+  assert.ok(prompt.includes("ask the user whether each one is actually relevant"));
+  assert.ok(prompt.includes(mcpRec.category));
+  assert.ok(prompt.includes(outputStylesRec.category));
 });
 
 test("renderFixPrompt: appends the attention banner in English", () => {

@@ -28,7 +28,7 @@ function check(root) {
       raw,
       findings,
       recommendations,
-      skipInFixPrompt: true,
+      fixPromptMode: "manual",
     });
   }
   raw += 15;
@@ -69,7 +69,7 @@ function check(root) {
     raw,
     findings,
     recommendations,
-    skipInFixPrompt: true,
+    fixPromptMode: "manual",
   });
 }
 

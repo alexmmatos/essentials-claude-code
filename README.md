@@ -33,18 +33,22 @@ Overall score: 91/100 (91%)
 
 Detected languages: JavaScript/TypeScript (100%)
 
-████████████████████ CLAUDE.md        20/20
-████████████████████ settings.json    15/15
-█████████████████░░░ Skills           13/15
-█████████████████░░░ Subagents        13/15
-████████████████████ Rules            10/10
-████████████████████ MCP              5/5
-████████████████████ Git hygiene      5/5
-░░░░░░░░░░░░░░░░░░░░ Extras           0/5
-████████████████████ SOLID & GoF      10/10
+████████████████████ CLAUDE.md                   20/20
+████████████████████ settings.json               15/15
+█████████████████░░░ Skills                      13/15
+█████████████████░░░ Subagents                   13/15
+████████████████████ Rules                       10/10
+████████████████████ MCP                         5/5
+████████████████████ Git hygiene                 5/5
+░░░░░░░░░░░░░░░░░░░░ Output Styles (Optional)    0/1
+░░░░░░░░░░░░░░░░░░░░ Workflows (Optional)        0/1
+░░░░░░░░░░░░░░░░░░░░ Agent Memory (Optional)     0/2
+░░░░░░░░░░░░░░░░░░░░ Worktree Include (Optional) 0/1
+████████████████████ SOLID & GoF                 10/10
 
 Top recommendations
-  → [Extras] Optional: create .claude/output-styles/ if the team shares a specific response mode.
+  → [Agent Memory (Optional)] Enable memory: project on subagents that benefit from memory across runs.
+  → [Output Styles (Optional)] Create .claude/output-styles/ if the team shares a specific response mode.
   → [Skills] Consider capturing more repeated workflows as skills (target: 3+).
 ```
 
@@ -54,7 +58,8 @@ Top recommendations
 |---|---|
 | `--json` | Prints the result as JSON (for CI or scripts) |
 | `--verbose`, `-v` | Shows the details of each check per category |
-| `--explain` | Shows why each remaining recommendation matters, category by category |
+| `--explain` | Shows why each remaining recommendation matters, category by category (on by default) |
+| `--no-explain` | Hides the "why this matters" reasoning |
 | `--generate-essential-agents` | Generates a few subagents in `.claude/agents/` matched to the project's detected language (see [Generating essential agents](#generating-essential-agents) below) |
 | `--fix` | Prints a ready-to-paste prompt for Claude Code listing what's missing, ordered by score gap (see [Fixing the gaps](#fixing-the-gaps) below) |
 | `--fix-basic` | Creates the missing basic scaffolding directly: `CLAUDE.md`, `.claude/settings.json`, `.claude/{rules,skills,agents}/` (see [Fixing the gaps](#fixing-the-gaps) below) |
@@ -76,7 +81,10 @@ The score (0–100) is split across weighted categories:
 | `SOLID & GoF` | 10 | Some `.md` file in the project (outside `node_modules`/`.git`) mentions SOLID principles, and some mentions GoF design patterns |
 | `MCP` | 5 | `.mcp.json` exists, is valid JSON, has at least one server in `mcpServers`, and no `env` value that looks like a hardcoded secret (uses `${VAR}` instead of a literal value) |
 | `Git hygiene` | 5 | Personal files (`.claude/settings.local.json`, `CLAUDE.local.md`), when present, are in `.gitignore` |
-| `Extras` | 5 | `output-styles/`, `workflows/`, `agent-memory/`, `.worktreeinclude` |
+| `Output Styles (Optional)` | 1 | `.claude/output-styles/` has at least one `.md` file |
+| `Workflows (Optional)` | 1 | `.claude/workflows/` has at least one `.js` file |
+| `Agent Memory (Optional)` | 2 | `.claude/agent-memory/` has at least one file |
+| `Worktree Include (Optional)` | 1 | `.worktreeinclude` exists |
 
 ## Language detection
 

@@ -62,7 +62,7 @@ function parseArgs(argv) {
     color: true,
     minScore: null,
     help: false,
-    explain: false,
+    explain: true,
     generateEssentialAgents: false,
     generateAllAgents: false,
     fix: false,
@@ -75,6 +75,7 @@ function parseArgs(argv) {
     else if (arg === "--verbose" || arg === "-v") opts.verbose = true;
     else if (arg === "--no-color") opts.color = false;
     else if (arg === "--explain") opts.explain = true;
+    else if (arg === "--no-explain") opts.explain = false;
     else if (arg === "--generate-essential-agents") opts.generateEssentialAgents = true;
     else if (arg === "--generate-all-agents") opts.generateAllAgents = true;
     else if (arg === "--fix") opts.fix = true;
@@ -101,7 +102,8 @@ Arguments:
 Options:
   --json                        Print the result as JSON (for CI/scripts)
   --verbose, -v                 Show the details of each category
-  --explain                     Show why each missing recommendation matters
+  --explain                     Show why each missing recommendation matters (on by default)
+  --no-explain                  Hide the "why this matters" reasoning
   --generate-essential-agents   Generate a few subagents in .claude/agents/ matched
                                  to the project's detected language, from
                                  github.com/VoltAgent/awesome-claude-code-subagents (MIT)
@@ -118,9 +120,10 @@ Options:
   --help, -h                    Show this help
 
 Examples:
-  essentials-claude-code                        Analyze the current directory
+  essentials-claude-code                        Analyze the current directory (explain on by default)
   essentials-claude-code ../other-project       Analyze a different directory
-  essentials-claude-code --verbose --explain    Show details and the reasoning behind them
+  essentials-claude-code --verbose              Also show per-category detail
+  essentials-claude-code --no-explain           Hide the "why this matters" reasoning
   essentials-claude-code --json > report.json   Save the result as JSON
   essentials-claude-code --min-score=70         Exit with code 1 in CI if the score is below 70
 `);

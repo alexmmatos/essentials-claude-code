@@ -9,17 +9,34 @@ const WEIGHTS = {
   rules: 10,
   mcp: 5,
   hygiene: 5,
-  extras: 5,
+  output_styles: 1,
+  workflows: 1,
+  agent_memory: 2,
+  worktree_include: 1,
   principles: 10,
 };
+
+/**
+ * How a category's recommendations should be handled by the generated --fix prompt:
+ * - "auto": safe for an agent to implement directly.
+ * - "conditional": depends on context only the user knows (team practices, whether a
+ *   feature is even wanted) — the agent should ask, not assume, and never fabricate
+ *   scaffolding just to satisfy the score.
+ * - "manual": touches a security-sensitive file that already exists (e.g. permissions
+ *   in settings.json) — the user should review and edit it themselves.
+ */
+const FIX_PROMPT_MODES = ["auto", "conditional", "manual"];
 
 /**
  * Builds a normalized category result.
  * `raw` is a 0-100 score for the category; `points` is scaled by its weight.
  */
-function buildResult({ id, label, raw, findings, recommendations, skipInFixPrompt = false }) {
+function buildResult({ id, label, raw, findings, recommendations, fixPromptMode = "auto" }) {
   const weight = WEIGHTS[id];
   if (weight === undefined) throw new Error(`Unknown category id: ${id}`);
+  if (!FIX_PROMPT_MODES.includes(fixPromptMode)) {
+    throw new Error(`Unknown fixPromptMode: ${fixPromptMode}`);
+  }
   const clamped = Math.max(0, Math.min(100, raw));
   const points = Math.round((weight * clamped) / 100);
   return {
@@ -31,7 +48,7 @@ function buildResult({ id, label, raw, findings, recommendations, skipInFixPromp
     findings,
     recommendations,
     explanation: EXPLANATIONS[id] || null,
-    skipInFixPrompt,
+    fixPromptMode,
   };
 }
 
@@ -45,7 +62,7 @@ function aggregate(categoryResults) {
       gap: c.weight - c.points,
       items: c.recommendations,
       explanation: c.explanation,
-      skipInFixPrompt: c.skipInFixPrompt,
+      fixPromptMode: c.fixPromptMode,
     }))
     .filter((c) => c.items.length > 0)
     .sort((a, b) => b.gap - a.gap);
@@ -58,4 +75,4 @@ function aggregate(categoryResults) {
   };
 }
 
-module.exports = { WEIGHTS, buildResult, aggregate };
+module.exports = { WEIGHTS, FIX_PROMPT_MODES, buildResult, aggregate };

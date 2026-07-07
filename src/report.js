@@ -53,10 +53,12 @@ function renderTerminal(result, { verbose = false, color = true, explain = false
   lines.push(`${c.dim}${renderLanguages(result.languages)}${c.reset}`);
   lines.push("");
 
+  const labelWidth = Math.max(16, ...result.categories.map((cat) => cat.label.length));
+
   for (const cat of result.categories) {
     const catPct = cat.weight === 0 ? 0 : Math.round((100 * cat.points) / cat.weight);
     lines.push(
-      `${scoreColor(catPct)}${bar(cat.points, cat.weight)}${c.reset} ${cat.label.padEnd(16)} ${cat.points}/${cat.weight}`
+      `${scoreColor(catPct)}${bar(cat.points, cat.weight)}${c.reset} ${cat.label.padEnd(labelWidth)} ${cat.points}/${cat.weight}`
     );
     if (verbose) {
       for (const f of cat.findings) {

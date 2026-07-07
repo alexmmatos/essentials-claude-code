@@ -8,10 +8,26 @@ const agents = require("./checks/agents");
 const rules = require("./checks/rules");
 const mcp = require("./checks/mcp");
 const hygiene = require("./checks/hygiene");
-const extras = require("./checks/extras");
+const outputStyles = require("./checks/outputStyles");
+const workflows = require("./checks/workflows");
+const agentMemory = require("./checks/agentMemory");
+const worktreeInclude = require("./checks/worktreeInclude");
 const principles = require("./checks/principles");
 
-const CHECKS = [claudeMd, settings, skills, agents, rules, mcp, hygiene, extras, principles];
+const CHECKS = [
+  claudeMd,
+  settings,
+  skills,
+  agents,
+  rules,
+  mcp,
+  hygiene,
+  outputStyles,
+  workflows,
+  agentMemory,
+  worktreeInclude,
+  principles,
+];
 
 /** Strips internal-only fields (like the RegExp in `commandSignal`) before exposing languages in the report/JSON. */
 function toPublicLanguages(languages) {
