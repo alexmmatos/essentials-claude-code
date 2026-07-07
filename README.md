@@ -1,4 +1,4 @@
-# essentials-claude-code
+# Essentials Claude Code
 
 > **Disclaimer:** This is an independent, unofficial project. It is not
 > affiliated with, endorsed by, or otherwise officially associated with
