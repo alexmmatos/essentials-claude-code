@@ -1,12 +1,12 @@
 ---
-description: Generate real content for the project's missing CLAUDE.md, skills, and subagents, ordered by score gap
+description: Fix this project's missing Claude Code setup by writing real CLAUDE.md content, skills, and subagents
 argument-hint: "[path]"
 ---
 
 Run:
 
 ```
-node "${CLAUDE_PLUGIN_ROOT}/bin/cli.js" $ARGUMENTS --fix-prompt
+node "${CLAUDE_PLUGIN_ROOT}/bin/cli.js" $ARGUMENTS --fix
 ```
 
 That command's output is a generated prompt listing what's missing, ordered

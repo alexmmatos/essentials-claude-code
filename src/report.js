@@ -94,8 +94,7 @@ function renderTerminal(result, { verbose = false, color = true, explain = false
   tips.push(["--json", "machine-readable output, for CI or scripts"]);
   if (hasGaps) {
     tips.push(["--fix-basic", "create the missing scaffolding automatically (CLAUDE.md, settings.json, folders) — never overwrites anything"]);
-    tips.push(["--fix-prompt", "get a ready-to-paste prompt for Claude Code to write the real content instead"]);
-    tips.push(["--fix", "not sure which of the two above? this asks and explains both"]);
+    tips.push(["--fix", "get a ready-to-paste prompt for Claude Code to write the real content instead"]);
   }
   if (agentsIncomplete) {
     tips.push(["--generate-essential-agents", "add a subagent matched to this project's language — Subagents isn't at full score yet"]);

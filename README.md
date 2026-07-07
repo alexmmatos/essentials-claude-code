@@ -56,8 +56,7 @@ Top recommendations
 | `--verbose`, `-v` | Shows the details of each check per category |
 | `--explain` | Shows why each remaining recommendation matters, category by category |
 | `--generate-essential-agents` | Generates a few subagents in `.claude/agents/` matched to the project's detected language (see [Generating essential agents](#generating-essential-agents) below) |
-| `--fix` | Asks interactively whether to run `--fix-basic` or `--fix-prompt`, explaining what each one does (see [Fixing the gaps](#fixing-the-gaps) below) |
-| `--fix-prompt` | Prints a ready-to-paste prompt for Claude Code listing what's missing, ordered by score gap (see [Fixing the gaps](#fixing-the-gaps) below) |
+| `--fix` | Prints a ready-to-paste prompt for Claude Code listing what's missing, ordered by score gap (see [Fixing the gaps](#fixing-the-gaps) below) |
 | `--fix-basic` | Creates the missing basic scaffolding directly: `CLAUDE.md`, `.claude/settings.json`, `.claude/{rules,skills,agents}/` (see [Fixing the gaps](#fixing-the-gaps) below) |
 | `--min-score=N` | Exits with code 1 if the total score is lower than `N` (useful in CI) |
 | `--no-color` | Disables terminal colors |
@@ -145,15 +144,7 @@ behavior and `THIRD_PARTY_NOTICES.md` as `--generate-essential-agents`.
 
 ## Fixing the gaps
 
-Two ways to act on the recommendations, from most to least automated. Not sure
-which one fits? Run:
-
-```bash
-npx essentials-claude-code --fix
-```
-
-It explains both and asks which to run — answer `1`/`basic` or `2`/`prompt`
-(or pass one of the flags below directly to skip the question).
+Two ways to act on the recommendations, from most to least automated:
 
 ```bash
 npx essentials-claude-code --fix-basic
@@ -169,7 +160,7 @@ Nothing that already exists is ever overwritten, and the score re-runs
 afterward.
 
 ```bash
-npx essentials-claude-code --fix-prompt
+npx essentials-claude-code --fix
 ```
 
 Prints a single, ready-to-paste prompt — ordered by score gap, each item
@@ -177,7 +168,9 @@ paired with the same "why it matters" reasoning from `--explain` — for cases
 where scaffolding alone isn't enough and you want Claude Code to actually
 write the content (a real `CLAUDE.md`, real skills, real subagents). The
 output ends with a highlighted reminder to paste it into a Claude Code
-session.
+session. (Running this through the Claude Code plugin's `/fix` command
+instead of `npx` skips the copy-paste step — Claude executes the generated
+prompt directly.)
 
 ## Running locally (without publishing)
 

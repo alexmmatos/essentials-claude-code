@@ -23,7 +23,7 @@ test("--help lists every supported flag", () => {
     "--verbose, -v",
     "--explain",
     "--generate-essential-agents",
-    "--fix-prompt",
+    "--fix",
     "--fix-basic",
     "--min-score=N",
     "--no-color",

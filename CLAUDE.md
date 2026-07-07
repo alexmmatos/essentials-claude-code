@@ -37,7 +37,7 @@ produces a 0-100 score with recommendations.
 - `src/thirdPartyNotice.js`: shared `THIRD_PARTY_NOTICES.md` writer for both
   agent generators (MIT attribution requirement)
 - `src/fixBasic.js` / `src/fixPrompt.js`: `--fix-basic` (mechanical scaffolding)
-  and `--fix-prompt` (paste-into-Claude-Code prompt text)
+  and `--fix` (paste-into-Claude-Code prompt text)
 
 ## Rules
 - Every check in `src/checks/` must return via `buildResult` from `src/score.js`,

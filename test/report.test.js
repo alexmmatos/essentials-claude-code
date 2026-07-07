@@ -47,14 +47,13 @@ test("renderTerminal: reports the manifest-detected language even with an empty 
   assert.ok(output.includes("JavaScript/TypeScript"));
 });
 
-test("renderTerminal: an empty project (all gaps) suggests --fix-basic, --fix-prompt, --fix, and --generate-essential-agents", () => {
+test("renderTerminal: an empty project (all gaps) suggests --fix-basic, --fix, and --generate-essential-agents", () => {
   const result = inspect(emptyProject());
   const output = renderTerminal(result, { color: false });
 
   assert.ok(output.includes("Useful next steps"));
   assert.ok(output.includes("--fix-basic"));
-  assert.ok(output.includes("--fix-prompt"));
-  assert.ok(output.includes("not sure which of the two above"), "expected the --fix suggestion");
+  assert.ok(output.includes("ready-to-paste prompt for Claude Code"), "expected the --fix suggestion");
   assert.ok(output.includes("--generate-essential-agents"));
   assert.ok(output.includes("--explain"));
   assert.ok(output.includes("--verbose"));
@@ -81,7 +80,7 @@ test("renderTerminal: a fully-scored result suggests neither fix flags nor --gen
   const output = renderTerminal(result, { color: false });
 
   assert.ok(!output.includes("--fix-basic"));
-  assert.ok(!output.includes("--fix-prompt"));
+  assert.ok(!output.includes("--fix"));
   assert.ok(!output.includes("--generate-essential-agents"));
   assert.ok(output.includes("--json"));
 });

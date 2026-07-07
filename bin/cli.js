@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-const readline = require("node:readline");
 const { inspect } = require("../src/index");
 const { renderTerminal, renderJson, renderFixPrompt } = require("../src/report");
 const { generateEssentialAgents } = require("../src/agentTemplates");
@@ -55,43 +54,6 @@ function printFixBasicSummary(actions) {
   console.log("");
 }
 
-function parseFixChoice(answer) {
-  const normalized = String(answer).trim().toLowerCase();
-  if (["1", "basic", "fix-basic", "--fix-basic"].includes(normalized)) return "basic";
-  if (["2", "prompt", "fix-prompt", "--fix-prompt"].includes(normalized)) return "prompt";
-  return null;
-}
-
-/**
- * Explains both fix modes and asks which one to run. Resolves to "basic", "prompt",
- * or null (unrecognized answer, or stdin closed without one — e.g. non-interactive
- * use with nothing piped in). Never hangs: `close` resolves null if no answer came.
- */
-function promptFixChoice() {
-  console.log("Two ways to act on the recommendations:");
-  console.log("");
-  console.log("  1) --fix-basic   Mechanically creates the missing scaffolding (CLAUDE.md,");
-  console.log("                   .claude/settings.json, .claude/{rules,skills,agents}/).");
-  console.log("                   No content generation, and it never overwrites anything.");
-  console.log("  2) --fix-prompt  Prints a ready-to-paste prompt for Claude Code, ordered by");
-  console.log("                   score gap, so Claude writes the real content instead —");
-  console.log("                   an actual CLAUDE.md, real skills, real subagents.");
-  console.log("");
-
-  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-  return new Promise((resolve) => {
-    let answered = false;
-    rl.question("Choose 1 (basic) or 2 (prompt): ", (answer) => {
-      answered = true;
-      rl.close();
-      resolve(parseFixChoice(answer));
-    });
-    rl.on("close", () => {
-      if (!answered) resolve(null);
-    });
-  });
-}
-
 function parseArgs(argv) {
   const opts = {
     path: ".",
@@ -104,7 +66,6 @@ function parseArgs(argv) {
     generateEssentialAgents: false,
     generateAllAgents: false,
     fix: false,
-    fixPrompt: false,
     fixBasic: false,
   };
   const positional = [];
@@ -117,7 +78,6 @@ function parseArgs(argv) {
     else if (arg === "--generate-essential-agents") opts.generateEssentialAgents = true;
     else if (arg === "--generate-all-agents") opts.generateAllAgents = true;
     else if (arg === "--fix") opts.fix = true;
-    else if (arg === "--fix-prompt") opts.fixPrompt = true;
     else if (arg === "--fix-basic") opts.fixBasic = true;
     else if (arg === "--help" || arg === "-h") opts.help = true;
     else if (arg.startsWith("--min-score=")) opts.minScore = Number(arg.split("=")[1]);
@@ -149,9 +109,7 @@ Options:
                                  and generate every subagent with a positive relevance
                                  score (uses ripgrep if installed; falls back to a
                                  slower built-in scanner otherwise)
-  --fix                         Ask interactively whether to run --fix-basic or
-                                 --fix-prompt, explaining what each one does
-  --fix-prompt                  Print a ready-to-paste prompt for Claude Code listing
+  --fix                         Print a ready-to-paste prompt for Claude Code listing
                                  what's missing, ordered by score gap
   --fix-basic                   Create the missing basic scaffolding (CLAUDE.md,
                                  .claude/settings.json, .claude/{rules,skills,agents}/)
@@ -175,8 +133,7 @@ async function main() {
     return;
   }
 
-  const hasAction =
-    opts.generateEssentialAgents || opts.generateAllAgents || opts.fix || opts.fixBasic || opts.fixPrompt;
+  const hasAction = opts.generateEssentialAgents || opts.generateAllAgents || opts.fix || opts.fixBasic;
 
   let result = inspect(opts.path);
 
@@ -192,24 +149,13 @@ async function main() {
     result = inspect(opts.path);
   }
 
-  if (opts.fix) {
-    const choice = await promptFixChoice();
-    console.log("");
-    if (choice === "basic") opts.fixBasic = true;
-    else if (choice === "prompt") opts.fixPrompt = true;
-    else {
-      console.log("No valid choice made — run again with --fix-basic or --fix-prompt directly.");
-      return;
-    }
-  }
-
   if (opts.fixBasic) {
     const actions = fixBasic(result.root);
     printFixBasicSummary(actions);
     result = inspect(opts.path);
   }
 
-  if (opts.fixPrompt) {
+  if (opts.fix) {
     console.log(renderFixPrompt(buildFixPrompt(result), { color: opts.color }));
     return;
   }
