@@ -9,8 +9,11 @@ function buildFixPrompt(result) {
   lines.push("Please implement the following, in priority order (biggest score gap first):");
   lines.push("");
 
+  const actionable = result.recommendations.filter((rec) => !rec.skipInFixPrompt);
+  const manual = result.recommendations.filter((rec) => rec.skipInFixPrompt);
+
   let n = 1;
-  for (const rec of result.recommendations) {
+  for (const rec of actionable) {
     lines.push(`${n}. ${rec.category} (${rec.gap} point${rec.gap === 1 ? "" : "s"} missing)`);
     for (const item of rec.items) {
       lines.push(`   - ${item}`);
@@ -20,6 +23,16 @@ function buildFixPrompt(result) {
     }
     lines.push("");
     n += 1;
+  }
+
+  if (manual.length > 0) {
+    lines.push(
+      "The following already exist and are security-sensitive Claude Code config — review and edit them yourself instead of having an agent change them automatically:"
+    );
+    for (const rec of manual) {
+      lines.push(`- ${rec.category}`);
+    }
+    lines.push("");
   }
 
   lines.push("Keep the changes minimal and focused only on what's listed above.");

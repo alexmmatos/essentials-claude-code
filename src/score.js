@@ -17,7 +17,7 @@ const WEIGHTS = {
  * Builds a normalized category result.
  * `raw` is a 0-100 score for the category; `points` is scaled by its weight.
  */
-function buildResult({ id, label, raw, findings, recommendations }) {
+function buildResult({ id, label, raw, findings, recommendations, skipInFixPrompt = false }) {
   const weight = WEIGHTS[id];
   if (weight === undefined) throw new Error(`Unknown category id: ${id}`);
   const clamped = Math.max(0, Math.min(100, raw));
@@ -31,6 +31,7 @@ function buildResult({ id, label, raw, findings, recommendations }) {
     findings,
     recommendations,
     explanation: EXPLANATIONS[id] || null,
+    skipInFixPrompt,
   };
 }
 
@@ -44,6 +45,7 @@ function aggregate(categoryResults) {
       gap: c.weight - c.points,
       items: c.recommendations,
       explanation: c.explanation,
+      skipInFixPrompt: c.skipInFixPrompt,
     }))
     .filter((c) => c.items.length > 0)
     .sort((a, b) => b.gap - a.gap);

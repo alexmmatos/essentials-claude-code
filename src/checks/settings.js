@@ -22,7 +22,14 @@ function check(root) {
   if (!ok) {
     findings.push({ type: "warn", message: `Invalid JSON: ${error}` });
     recommendations.push("Fix the JSON syntax in .claude/settings.json.");
-    return buildResult({ id: "settings", label: "settings.json", raw, findings, recommendations });
+    return buildResult({
+      id: "settings",
+      label: "settings.json",
+      raw,
+      findings,
+      recommendations,
+      skipInFixPrompt: true,
+    });
   }
   raw += 15;
   findings.push({ type: "ok", message: "Valid JSON." });
@@ -56,7 +63,14 @@ function check(root) {
     );
   }
 
-  return buildResult({ id: "settings", label: "settings.json", raw, findings, recommendations });
+  return buildResult({
+    id: "settings",
+    label: "settings.json",
+    raw,
+    findings,
+    recommendations,
+    skipInFixPrompt: true,
+  });
 }
 
 module.exports = { check };
