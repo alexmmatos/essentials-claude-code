@@ -16,6 +16,27 @@ improve.
 The `docs/claude-code-docs/` folder contains the Claude Code documentation
 used as a local reference for this project.
 
+## Install as a Claude Code plugin
+
+This project is also a Claude Code plugin (see `.claude-plugin/plugin.json`
+and `.claude-plugin/marketplace.json`) — no `npx` or Node install required
+on your side, just add the marketplace and install it from inside Claude
+Code:
+
+```
+/plugin marketplace add https://github.com/alexmmatos/essentials-claude-code
+/plugin install essentials-claude-code@essentials-claude-code-marketplace
+```
+
+Once installed, it exposes these slash commands, each a thin wrapper around
+the CLI flags described below:
+
+| Command | Equivalent to |
+|---|---|
+| `/essentials-claude-code:audit [path] [--min-score=N]` | `npx essentials-claude-code --verbose --explain` |
+| `/essentials-claude-code:fix [path]` | `npx essentials-claude-code --fix`, with Claude executing the generated prompt directly instead of you pasting it back in |
+| `/essentials-claude-code:generate-agents [path]` | `npx essentials-claude-code --generate-essential-agents` |
+
 ## Usage
 
 ```bash
@@ -47,9 +68,26 @@ Detected languages: JavaScript/TypeScript (100%)
 ████████████████████ SOLID & GoF                 10/10
 
 Top recommendations
+  → [MCP] If the team depends on external data (database, Slack, APIs), configure MCP servers in .mcp.json.
+    Why it matters: MCP is what connects Claude to systems it can't otherwise reach — a database, an internal API, Slack. Without it, Claude either can't act on that data at all or falls back on ad hoc shell commands, which is slower and less reliable. Hardcoding secrets in .mcp.json instead of referencing environment variables also risks leaking them into a file people commit.
+  → [settings.json] Configure permissions.allow/deny to make the commands Claude runs predictable.
+  → [settings.json] Consider configuring statusLine in settings.json to continuously track context usage.
+    Why it matters: Unlike CLAUDE.md, which Claude reads as guidance, settings.json's permissions and hooks are enforced by Claude Code itself. A hook always fires on its event and a permission rule always blocks or allows a command — it's the only way to guarantee behavior (lint after every edit, never run rm -rf) instead of hoping Claude follows an instruction. statusLine also helps you notice a filling context window before it degrades output quality.
   → [Agent Memory (Optional)] Enable memory: project on subagents that benefit from memory across runs.
+    Why it matters: Subagent memory lets a subagent build up institutional knowledge (patterns, past mistakes, architectural decisions) across sessions instead of rediscovering it every run. It compounds in value the more a subagent is reused, so it's worth more than the other Extras here.
   → [Output Styles (Optional)] Create .claude/output-styles/ if the team shares a specific response mode.
-  → [Skills] Consider capturing more repeated workflows as skills (target: 3+).
+    Why it matters: A custom output style changes Claude's default tone and response shape for everyone on the team, instead of each person repeating the same preferences in every prompt. It's a nice-to-have — skip it until the team actually agrees on a shared response mode.
+  → [Workflows (Optional)] Use /workflows to save multi-subagent orchestrations in .claude/workflows/.
+    Why it matters: Saved workflows turn a multi-subagent orchestration you'd otherwise re-assemble by hand into a single reusable command. Worth adding once you have an orchestration you actually repeat, not before.
+  → [Worktree Include (Optional)] If you use git worktrees, create .worktreeinclude to copy .env and similar files.
+    Why it matters: .worktreeinclude copies files like .env into new git worktrees automatically. It only matters if the team actually uses worktrees — otherwise there's nothing for it to do.
+  → [Subagents] Define description (so Claude knows when to delegate) and tools (to restrict access) on every subagent.
+    Why it matters: Subagents isolate work in their own context window and return only a summary, so tasks that read many files or explore broadly don't fill up your main conversation. Without them, large exploratory or parallel tasks compete with your actual work for the same limited context.
+
+Useful next steps
+  → --json — machine-readable output, for CI or scripts
+  → --fix-basic — create the missing scaffolding automatically (CLAUDE.md, settings.json, folders) — never overwrites anything
+  → --fix — get a ready-to-paste prompt for Claude Code to write the real content instead
 ```
 
 ### Options
