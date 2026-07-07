@@ -1,0 +1,13 @@
+{
+  "name": "essentials-claude-code",
+  "displayName": "Claude Code Essentials Auditor",
+  "description": "Audit how well a project takes advantage of Claude Code's extensions (CLAUDE.md, settings.json, skills, subagents, rules, MCP) and produce a 0-100 score with recommendations.",
+  "version": "0.1.1",
+  "author": {
+    "name": "Alex Matos",
+    "url": "https://github.com/alexmmatos"
+  },
+  "repository": "https://github.com/alexmmatos/essentials-claude-code",
+  "license": "MIT",
+  "keywords": ["claude-code", "audit", "score", "recommendations"]
+}

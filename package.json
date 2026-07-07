@@ -1,6 +1,6 @@
 {
   "name": "essentials-claude-code",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Alex Matos (https://github.com/alexmmatos)",
   "description": "Evaluates how well a project takes advantage of Claude Code (CLAUDE.md, skills, subagents, hooks, MCP, rules) and produces a score with recommendations.",
   "license": "MIT",
